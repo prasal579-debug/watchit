@@ -1,1 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FilmyFly Replica Template</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
+        body {
+            background-color: #f4f4f4;
+            color: #000;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+
+        /* Top Header Banner */
+        .header-banner {
+            background-color: #d90000;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            border-bottom: 2px solid #000;
+        }
+
+        /* Search Bar Section */
+        .search-bar {
+            background-color: #0056b3;
+            padding: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .search-bar input[type="text"] {
+            width: 65%;
+            padding: 4px 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .search-bar button {
+            padding: 4px 10px;
+            background-color: #eee;
+            border: 1px solid #aaa;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        /* Bookmark Notice Bar */
+        .notice-bar {
+            background-color: #fffdd0;
+            text-align: center;
+            padding: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            border-bottom: 1px dashed #ccc;
+            position: relative;
+        }
+
+        .notice-bar a {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        /* Category Section Header */
+        .section-header {
+            background-color: #dbeaff;
+            color: #004085;
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            border-top: 1px solid #b8daff;
+            border-bottom: 1px solid #b8daff;
+        }
+
+        /* Movie Item List */
+        .movie-card {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            padding: 8px;
+            border-bottom: 1px solid #e0e0e0;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .movie-card img {
+            width: 70px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .movie-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .movie-title {
+            color: #800000;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .movie-tag {
+            display: inline-block;
+            background-color: #806000;
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            width: fit-content;
+        }
+
+        /* Official App Banner Promo */
+        .app-promo {
+            background: linear-gradient(to right, #1d2b3a, #ffaa00);
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 5px 0;
+            border-radius: 8px;
+        }
+
+        .app-promo-text {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .app-promo-sub {
+            font-size: 11px;
+            color: #ffeb3b;
+        }
+
+        .download-btn-yellow {
+            background-color: #ffd700;
+            color: #000;
+            font-weight: bold;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            border: 1px solid #000;
+        }
+
+        /* Single Page Detail View Styling */
+        .detail-poster {
+            width: 100%;
+            max-height: 450px;
+            object-fit: contain;
+            background-color: #000;
+            display: block;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            font-size: 13px;
+        }
+
+        .info-table td {
+            padding: 6px 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-table td:first-child {
+            font-weight: bold;
+            width: 30%;
+        }
+
+        .main-download-box {
+            background-color: #2e7d32;
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            margin: 10px;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Resolution Download Buttons */
+        .link-container {
+            padding: 10px;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dl-btn {
+            display: block;
+            text-align: center;
+            color: #fff;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .btn-green  { background-color: #2e7d32; }
+        .btn-orange { background-color: #f57c00; }
+        .btn-red    { background-color: #d32f2f; }
+        .btn-blue   { background-color: #1976d2; }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            background-color: #000;
+            padding: 2px;
+        }
+
+        .screenshots-grid img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Banner -->
+    <div class="header-banner">
+        FilmyFly
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search Movie...">
+        <button type="button">Search</button>
+    </div>
+
+    <!-- Notice Bar -->
+    <div class="notice-bar">
+        FilmyFly Official Site Bookmark <a href="#">FilmyFly.Soy</a>
+    </div>
+
+    <!-- SECTION 1: HOMEPAGE LISTINGS -->
+    <div class="section-header">
+        🔥 🔥 Trending Movies 🔥 🔥
+    </div>
+
+    <a href="#movie-detail" class="movie-card">
+        <img src="https://via.placeholder.com/70x90/cc0000/ffffff?text=Poster" alt="Poster">
+        <div class="movie-info">
+            <div class="movie-title">Gatta Kusthi 2 (2026) (Hindi + Tamil) Dual Audio UnCut South Movie HD ESub</div>
+            <span class="movie-tag">South Hindi Dubbed Movie</span>
+        </div>
+    </a>
+
+    <a href="#movie-detail" class="movie-card">
+        <img src="https://via.placeholder.com/70x90/008800/ffffff?text=Poster" alt="Poster">
+        <div class="movie-info">
+            <div class="movie-title">Peddi (2026) (Hindi + Telugu) Dual Audio UnCut South Movie HD ESub</div>
+            <span class="movie-tag">South Hindi Dubbed Movie</span>
+        </div>
+    </a>
+
+    <!-- App Download Banner -->
+    <div style="padding: 0 5px;">
+        <div class="app-promo">
+            <div>
+                <div class="app-promo-text">📱 The Official App is Here!</div>
+                <div class="app-promo-sub">V1.0 • Apk 2 MB • Android • Free</div>
+            </div>
+            <a href="#" class="download-btn-yellow">Download</a>
+        </div>
+    </div>
+
+    <div class="section-header">
+        🔥 🔥 Latest Movies 🔥 🔥
+    </div>
+
+    <a href="#movie-detail" class="movie-card">
+        <img src="https://via.placeholder.com/70x90/0000cc/ffffff?text=Poster" alt="Poster">
+        <div class="movie-info">
+            <div class="movie-title">Uyir (2026) (Hindi + Malayalam) Dual Audio UnCut South Movie HD ESub</div>
+            <span class="movie-tag">South Hindi Dubbed Movie</span>
+        </div>
+    </a>
+
+    <br>
+
+    <!-- SECTION 2: MOVIE DETAILS & DOWNLOAD LINKS PAGE -->
+    <div id="movie-detail">
+        <div class="section-header">
+            Gatta Kusthi 2 (2026) (Hindi + Tamil) Dual Audio UnCut South Movie HD ESub
+        </div>
+
+        <img src="https://via.placeholder.com/400x500/111/fff?text=Movie+Poster" alt="Main Poster" class="detail-poster">
+
+        <div class="section-header">
+            👉 File Info 👈
+        </div>
+
+        <table class="info-table">
+            <tr>
+                <td>Name:</td>
+                <td style="color: #b00000; font-weight: bold;">Gatta Kusthi 2 (2026) (Hindi + Tamil) Dual Audio UnCut South Movie HD ESub</td>
+            </tr>
+            <tr>
+                <td>Genre:</td>
+                <td style="color: #b85d00;">Comedy, Drama</td>
+            </tr>
+            <tr>
+                <td>Duration:</td>
+                <td style="color: #008000; font-weight: bold;">2h 33min</td>
+            </tr>
+            <tr>
+                <td>Release Date:</td>
+                <td style="color: #0000b3; font-weight: bold;">2026</td>
+            </tr>
+            <tr>
+                <td>Language:</td>
+                <td style="color: #008080; font-weight: bold;">Hindi + Tamil</td>
+            </tr>
+            <tr>
+                <td>Starcast:</td>
+                <td style="color: #800000;">Aishwarya Lekshmi, Vishnu Vishal, Ramya Krishnan, Yogi Babu</td>
+            </tr>
+            <tr>
+                <td>Size:</td>
+                <td style="color: #6a1b9a; font-weight: bold;">540Mb, 870Mb, 1.3Gb, 3.1Gb, 6.9Gb, 18.6Gb HD</td>
+            </tr>
+        </table>
+
+        <div class="section-header">
+            DOWNLOAD THIS MOVIE
+        </div>
+
+        <a href="#download-links" class="main-download-box">
+            Download 480p 720p 1080p 2160p(4k) [HD]
+        </a>
+
+        <!-- ScreenShots Section -->
+        <div class="section-header">
+            SCREENSHOT
+        </div>
+
+        <div class="screenshots-grid">
+            <img src="https://via.placeholder.com/300x170/333/fff?text=Screenshot+1" alt="Screenshot 1">
+            <img src="https://via.placeholder.com/300x170/444/fff?text=Screenshot+2" alt="Screenshot 2">
+            <img src="https://via.placeholder.com/300x170/555/fff?text=Screenshot+3" alt="Screenshot 3">
+            <img src="https://via.placeholder.com/300x170/666/fff?text=Screenshot+4" alt="Screenshot 4">
+        </div>
+
+        <!-- Links Page (Link Protector replica) -->
+        <div class="section-header" id="download-links">
+            Download Links
+        </div>
+
+        <div class="link-container">
+            <a href="#" class="dl-btn btn-green">Download 540Mb {480p-HEVC}</a>
+            <a href="#" class="dl-btn btn-orange">Download 870Mb {720p-HEVC}</a>
+            <a href="#" class="dl-btn btn-red">Download 1.3Gb {720p-HD}</a>
+            <a href="#" class="dl-btn btn-blue">Download 3.1Gb {1080p-HD}</a>
+            <a href="#" class="dl-btn btn-green">Download 6.2Gb {2160p-HEVC}</a>
+            <a href="#" class="dl-btn btn-red">Download 6.9Gb {1080p-WEB-DL}</a>
+            <a href="#" class="dl-btn btn-green">Download 18.6Gb {2160p-WEB-DL}</a>
+        </div>
+    </div>
+
+</body>
+</html>
